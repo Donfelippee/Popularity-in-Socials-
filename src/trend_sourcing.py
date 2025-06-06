@@ -62,7 +62,8 @@ class TrendSourcing:
             TrendCategory.NEUTRAL: 1.0
         }.get(trend['category'], 1.0)
         
-        return round(volume_score * volatility_score * category_bonus, 2)
+        # Cap the score at 1.0
+        return min(round(volume_score * volatility_score * category_bonus, 2), 1.0)
     
     @classmethod
     def get_top_trends(cls, top_n: int = 5, min_relevance: float = 0.5) -> List[Dict[str, Any]]:

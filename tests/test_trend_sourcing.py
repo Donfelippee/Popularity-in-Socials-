@@ -29,7 +29,7 @@ def test_score_trend_relevance():
     }
     
     high_score = TrendSourcing.score_trend_relevance(high_volatility_trend)
-    assert high_score > 1.0
+    assert high_score == 1.0  # Verify it's still capped at 1.0
 
 def test_get_top_trends():
     """Test retrieving top trends"""
